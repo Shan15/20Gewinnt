@@ -26,7 +26,7 @@ read -p "wie heißt du? " playerName
 
 while true; do
     currentPlayer="$playerName"
-    read -p "Aktuller Stand is $currentValue, $playerName, wie viel möchtest du hinzufügen (1 oder 2)? " playerInput
+    read -p "Aktuller Stand is $currentValue - $playerName, wie viel möchtest du hinzufügen (1 oder 2)? " playerInput
     # Validate playerinput
     while [ $playerInput -ne 1 ] && [ $playerInput -ne 2 ]; do
         echo "Bitte nur 1 oder 2 eingeben"
@@ -39,5 +39,16 @@ while true; do
     if [ $currentValue -ge 20 ]; then
         printWinner
     fi
+
+    # Bots turn
+    currentPlayer="Bot"
+    botInput=$((RANDOM % 2 + 1))
+    echo "Aktuller Stand is $currentValue - Der Bot wird $botInput hinzufügen"
+    currentValue=$((currentValue + botInput))
+
+    if [ $currentValue -ge 20 ]; then
+        printWinner
+    fi
+
 done
 
