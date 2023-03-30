@@ -11,7 +11,7 @@ currentValue=0
 # Required
 # gameMode = "pvp" or "pve" or "eve"
 # difficulty = "easy" or "medium" or "hard"
-difficulty="hard"
+difficulty="medium"
 gameMode="pve"
 
 # Colors
@@ -94,16 +94,16 @@ getBotInput(){
 
 if [ $gameMode = "pve" ]; then
     echo -en "\033[36m"
-    read -p "wie heißt du? " player1Name
+    read -p "wie heisst du? " player1Name
     echo -en "\033[0m"
 fi
 
 if [ $gameMode = "pvp" ]; then
     echo -en "\033[36m"
-    read -p "wie heißt der erste Spieler? " player1Name
+    read -p "wie heisst der erste Spieler? " player1Name
     echo -en "\033[0m"
     echo -en "\033[35m"
-    read -p "wie heißt der zweite Spieler? " player2Name
+    read -p "wie heisst der zweite Spieler? " player2Name
     echo -en "\033[0m"
 fi
 
