@@ -48,16 +48,23 @@ printWinner(){ # TODO: Fabio: Change output if eve
     if [ $currentPlayerType = "player" ]; then
         echo -e "\033[32mGlückwunsch $currentPlayer, du hast gewonnen!\033[0m"
         endTime=$(date +%s)
-        echo $currentPlayer, $(($endTime - $startTime)) >> winner.csv
+        echo $currentPlayer, $(($endTime - $startTime)), $currentValue >> winner.csv
     else
         echo -e "\033[31mDer Bot hat gewonnen!\033[0m"
     fi
     exit 0
 }
 
+printLeaderboard(){
+    echo -e "\033[0m"
+    echo -e "\033[0mLeaderboard: "
+    echo winner.csv | sort -t ',' -k2 -n
+}
+
 checkEnd(){
     if [ $currentValue -ge 20 ]; then
         printWinner
+        printLeaderboard
     fi
 }
 
