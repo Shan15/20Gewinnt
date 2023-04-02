@@ -13,6 +13,7 @@ currentValue=0
 # difficulty = "easy" or "medium" or "hard"
 difficulty="medium"
 gameMode="pve"
+startTime=timestamp=$(date +%s)
 
 # Colors
 # User1 \033[36m
@@ -21,36 +22,32 @@ gameMode="pve"
 # Fail \033[31m
 # Default \033[0m
 
-# read -p "Multiplayer(m) oder Singleplayer(s)? " gameMode
-
-# if [ $gameMode = "m" ]; then
-#     echo "multiplayer"
-# fi
-
-# if [ $gameMode = "s" ]; then
-#     echo "singelplayer"
-# fi
-
 askCompetitionMode(){
-    echo -en "\033[36m Willkommen zu 20 Gewinnt. Bitte wähle eines der folgenden Modi aus: "
-    read -p "pvp, pve oder eve? " gameMode
-    if [ $gameMode = "pvp" ]; then
+    echo -e "\033[36m Willkommen zu 20 Gewinnt. Bitte wähle eines der folgenden Modi aus: "
+    echo -e "\033[36mpvp(1)"
+    echo -e "\033[36mpve(2)"
+    echo -e "\033[36meve(3)"
+    read -p "" gameMode
+    if [ $gameMode = "1" ]; then
         gameMode="pvp"
-    elif [ $gameMode = "pve" ]; then
+        echo -e "\033[36m Du hast PVP gewählt."
+    elif [ $gameMode = "2" ]; then
         gameMode="pve"
-    elif [ $gameMode = "eve" ]; then
+        echo -e "\033[36m Du hast PVE gewählt."
+    elif [ $gameMode = "3" ]; then
         gameMode="eve"
+        echo -e "\033[36m Du hast EVE gewählt."
     else
         echo -e "\033[31mBitte nur pvp, pve oder eve eingeben eingeben"
         askCompetitionMode
     fi
 }
 
-
 printWinner(){ # TODO: Fabio: Change output if eve
     # check if player or bot won
     if [ $currentPlayerType = "player" ]; then
         echo -e "\033[32mGlückwunsch $currentPlayer, du hast gewonnen!\033[0m"
+        echo $currentPlayer > winner.csv
     else
         echo -e "\033[31mDer Bot hat gewonnen!\033[0m"
     fi
@@ -160,6 +157,7 @@ while true; do
         currentPlayer="Bot 2"
         getBotInput
         checkEnd
+        sleep 1
     fi
 done
 
