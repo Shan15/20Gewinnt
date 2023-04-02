@@ -55,7 +55,6 @@ printWinner(){ # TODO: Fabio: Change output if eve
 }
 
 printLeaderboard(){
-    echo -e "\033[0m"
     echo -e "\033[0mLeaderboard: "
     echo -e "\033[0mName, Zeit"
     cat winner.csv | cut -d "," -f 1,2 | sort -t "," -k 2 -n | head -n 10
