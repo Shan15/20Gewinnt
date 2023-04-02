@@ -23,22 +23,22 @@ startTime=$(date +%s)
 # Default \033[0m
 
 askCompetitionMode(){
-    echo -e "\033[36m Willkommen zu 20 Gewinnt. Bitte wähle eines der folgenden Modi aus: "
-    echo -e "\033[36mpvp(1)"
-    echo -e "\033[36mpve(2)"
-    echo -e "\033[36meve(3)"
+    echo -e "\033[0m Willkommen zu 20 Gewinnt. Bitte wähle eines der folgenden Modi aus: "
+    echo -e "\033[0mpvp(1)"
+    echo -e "\033[0mpve(2)"
+    echo -e "\033[0meve(3)"
     read -p "" gameMode
     if [ $gameMode = "1" ]; then
         gameMode="pvp"
-        echo -e "\033[36m Du hast PVP gewählt."
+        echo -e "\033[0m Du hast PVP gewählt."
     elif [ $gameMode = "2" ]; then
         gameMode="pve"
-        echo -e "\033[36m Du hast PVE gewählt."
+        echo -e "\033[0m Du hast PVE gewählt."
     elif [ $gameMode = "3" ]; then
         gameMode="eve"
-        echo -e "\033[36m Du hast EVE gewählt."
+        echo -e "\033[0m Du hast EVE gewählt."
     else
-        echo -e "\033[31mBitte nur pvp, pve oder eve eingeben eingeben"
+        echo -e "\033[0mBitte nur pvp, pve oder eve eingeben eingeben"
         askCompetitionMode
     fi
 }
