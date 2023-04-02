@@ -13,7 +13,7 @@ currentValue=0
 # difficulty = "easy" or "medium" or "hard"
 difficulty="medium"
 gameMode="pve"
-startTime=timestamp=$(date +%s)
+startTime=$(date +%s)
 
 # Colors
 # User1 \033[36m
@@ -47,7 +47,8 @@ printWinner(){ # TODO: Fabio: Change output if eve
     # check if player or bot won
     if [ $currentPlayerType = "player" ]; then
         echo -e "\033[32mGlückwunsch $currentPlayer, du hast gewonnen!\033[0m"
-        echo $currentPlayer > winner.csv
+        endTime=$(date +%s)
+        echo $currentPlayer, $(($endTime - $startTime)) >> winner.csv
     else
         echo -e "\033[31mDer Bot hat gewonnen!\033[0m"
     fi
@@ -111,6 +112,7 @@ if [ $gameMode = "pve" ]; then
     echo -en "\033[36m"
     read -p "wie heisst du? " player1Name
     echo -en "\033[0m"
+    startTime=$(date +%s)
 fi
 
 if [ $gameMode = "pvp" ]; then
@@ -120,6 +122,7 @@ if [ $gameMode = "pvp" ]; then
     echo -en "\033[35m"
     read -p "wie heisst der zweite Spieler? " player2Name
     echo -en "\033[0m"
+    startTime=$(date +%s)
 fi
 
 while true; do
