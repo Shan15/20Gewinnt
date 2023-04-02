@@ -31,6 +31,22 @@ gameMode="pve"
 #     echo "singelplayer"
 # fi
 
+askCompetitionMode(){
+    echo -en "\033[36m Willkommen zu 20 Gewinnt. Bitte wähle eines der folgenden Modi aus: "
+    read -p "pvp, pve oder eve? " gameMode
+    if [ $gameMode = "pvp" ]; then
+        gameMode="pvp"
+    elif [ $gameMode = "pve" ]; then
+        gameMode="pve"
+    elif [ $gameMode = "eve" ]; then
+        gameMode="eve"
+    else
+        echo -e "\033[31mBitte nur pvp, pve oder eve eingeben eingeben"
+        askCompetitionMode
+    fi
+}
+
+
 printWinner(){ # TODO: Fabio: Change output if eve
     # check if player or bot won
     if [ $currentPlayerType = "player" ]; then
@@ -91,6 +107,8 @@ getBotInput(){
     echo -e "${userColor}Aktuller Stand is $currentValue - Der Bot wird $botInput hinzufügen\033[0m"
     currentValue=$((currentValue + botInput))
 }
+
+askCompetitionMode
 
 if [ $gameMode = "pve" ]; then
     echo -en "\033[36m"
