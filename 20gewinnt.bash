@@ -113,9 +113,8 @@ getBotInput(){
     currentValue=$((currentValue + botInput))
 }
 
-askCompetitionMode
-
-if [ $gameMode = "pve" ]; then
+getUserName(){
+    if [ $gameMode = "pve" ]; then
     echo -en "\033[36m"
     read -p "wie heisst du? " player1Name
     echo -en "\033[0m"
@@ -131,6 +130,11 @@ if [ $gameMode = "pvp" ]; then
     echo -en "\033[0m"
     startTime=$(date +%s)
 fi
+}
+
+askCompetitionMode
+getUserName
+
 
 while true; do
     if [ $gameMode = "pvp" ]; then
