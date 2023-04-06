@@ -30,13 +30,13 @@ askCompetitionMode(){
     read -p "" gameMode
     if [ $gameMode = "1" ]; then
         gameMode="pvp"
-        echo -e "\033[0m Du hast PVP gewählt."
+        echo -e "\033[0mDu hast PVP gewählt."
     elif [ $gameMode = "2" ]; then
         gameMode="pve"
-        echo -e "\033[0m Du hast PVE gewählt."
+        echo -e "\033[0mDu hast PVE gewählt."
     elif [ $gameMode = "3" ]; then
         gameMode="eve"
-        echo -e "\033[0m Du hast EVE gewählt."
+        echo -e "\033[0mDu hast EVE gewählt."
     else
         echo -e "\033[0mBitte nur pvp, pve oder eve eingeben eingeben"
         askCompetitionMode
