@@ -23,7 +23,7 @@ startTime=$(date +%s)
 # Default \033[0m
 
 askCompetitionMode(){
-    echo -e "\033[0m Willkommen zu 20 Gewinnt. Bitte wähle eines der folgenden Modi aus: "
+    echo -e "\033[0mWillkommen zu 20 Gewinnt. Bitte wähle eines der folgenden Modi aus: "
     echo -e "\033[0mpvp(1)"
     echo -e "\033[0mpve(2)"
     echo -e "\033[0meve(3)"
@@ -51,6 +51,7 @@ printWinner(){
         echo -e "\033[32mGlückwunsch $currentPlayer, du hast gewonnen!\033[0m"
         endTime=$(date +%s)
         echo $currentPlayer, $(($endTime - $startTime)) Sekunden, $currentValue >> winner.csv
+        printLeaderboard
     else
         echo -e "\033[31mDer Bot hat gewonnen!\033[0m"
     fi
@@ -65,7 +66,6 @@ printLeaderboard(){
 checkEnd(){
     if [ $currentValue -ge 20 ]; then
         printWinner
-        printLeaderboard
         exit 0
     fi
 }
