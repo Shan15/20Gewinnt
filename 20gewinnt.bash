@@ -23,7 +23,7 @@ startTime=$(date +%s)
 # Default \033[0m
 
 askCompetitionMode(){
-    echo -e "\033[0m Willkommen zu 20 Gewinnt. Bitte wähle eines der folgenden Modi aus: "
+    echo -e "\033[0mWillkommen zu 20 Gewinnt. Bitte wähle eines der folgenden Modi aus: "
     echo -e "\033[0mpvp(1)"
     echo -e "\033[0mpve(2)"
     echo -e "\033[0meve(3)"
