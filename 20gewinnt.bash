@@ -43,8 +43,10 @@ askCompetitionMode(){
     fi
 }
 
-printWinner(){ # TODO: Fabio: Change output if eve
-    # check if player or bot won
+printWinner(){
+    if [ $gameMode = "eve" ]; then
+        echo -e "\033[32m${currentPlayer} hat gewonnen\033[0m"
+    fi
     if [ $currentPlayerType = "player" ]; then
         echo -e "\033[32mGlückwunsch $currentPlayer, du hast gewonnen!\033[0m"
         endTime=$(date +%s)
