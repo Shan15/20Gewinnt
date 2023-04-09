@@ -90,17 +90,16 @@ checkEnd(){
         exit 0
     fi
 }
-
 getUserInput(){
     currentPlayerType="player"
+
     echo -en "${userColor}"
-    read -p "Aktuller Stand is $currentValue - $currentPlayer, wie viel möchtest du hinzufügen (1 oder 2)? " playerInput
-    echo -en "\033[0m"
+    read -p "Aktuller Stand ist $currentValue - $currentPlayer, wie viel möchtest du hinzufügen (1 oder 2)? " playerInput
     # Validate playerinput
     while [ $playerInput != 1 ] && [ $playerInput != 2 ]; do
         echo -e "\033[31mBitte nur 1 oder 2 eingeben\033[0m"
         echo -en "${userColor}"
-        read -p "Aktuller Stand is $currentValue, $currentPlayer, wie viel möchtest du hinzufügen (1 oder 2)? " playerInput
+        read -p "Aktuller Stand ist $currentValue, $currentPlayer \xf0\x9f\xa7\x91, wie viel möchtest du hinzufügen (1 oder 2)? " playerInput
         echo -en "\033[0m"
     done
 
@@ -132,7 +131,7 @@ getBotInput(){
         botInput=$((RANDOM % 2 + 1))
     fi
 
-    echo -e "${userColor}Aktuller Stand is $currentValue - Der Bot wird $botInput hinzufügen\033[0m"
+    echo -e "${userColor}Aktuller Stand ist $currentValue - Der Bot \xf0\x9f\xa4\x96 wird $botInput hinzufügen\033[0m"
     currentValue=$((currentValue + botInput))
 }
 
