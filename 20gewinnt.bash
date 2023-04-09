@@ -26,14 +26,14 @@ askCompetitionMode(){
     echo -e "\033[0mpvp(1)"
     echo -e "\033[0mpve(2)"
     echo -e "\033[0meve(3)"
-    read -p "" gameMode
-    if [ $gameMode = "1" ]; then
+    read -p "" gameModeInput
+    if [ $gameModeInput = "1" ]; then
         gameMode="pvp"
         echo -e "\033[0mDu hast PVP gewählt."
-    elif [ $gameMode = "2" ]; then
+    elif [ $gameModeInput = "2" ]; then
         gameMode="pve"
         echo -e "\033[0mDu hast PVE gewählt."
-    elif [ $gameMode = "3" ]; then
+    elif [ $gameModeInput = "3" ]; then
         gameMode="eve"
         echo -e "\033[0mDu hast EVE gewählt."
     else
@@ -153,6 +153,7 @@ getUserName(){
 
 echo -e "\033[0mWillkommen zu 20 Gewinnt."
 askCompetitionMode
+askDifficultyMode
 getUserName
 
 
