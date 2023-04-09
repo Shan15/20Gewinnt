@@ -43,23 +43,25 @@ askCompetitionMode(){
 }
 
 askDifficultyMode(){
-    echo -e "\033[0mWählen Sie die gewünschte Schwierigkeitsstufe aus: "
-    echo -e "\033[0mleicht(1)"
-    echo -e "\033[0mmittel(2)"
-    echo -e "\033[0mschwer(3)"
-    read -p "" difficulty
-    if [ $difficulty = "1" ]; then
-        difficulty="easy"
-        echo -e "\033[0mDu hast die Schwierigkeitsstufe leicht gewählt."
-    elif [ $difficulty = "2" ]; then
-        difficulty="medium"
-        echo -e "\033[0mDu hast die Schwierigkeitsstufe mittel gewählt."
-    elif [ $difficulty = "3" ]; then
-        difficulty="hard"
-        echo -e "\033[0mDu hast die Schwierigkeitsstufe schwer gewählt."
-    else
-        echo -e "\033[31mBitte nur 1, 2 oder 3 eingeben"
-        askDifficultyMode
+    if [ $gameMode = "pve" ]; then
+        echo -e "\033[0mWählen Sie die gewünschte Schwierigkeitsstufe aus: "
+        echo -e "\033[0mleicht(1)"
+        echo -e "\033[0mmittel(2)"
+        echo -e "\033[0mschwer(3)"
+        read -p "" difficulty
+        if [ $difficulty = "1" ]; then
+            difficulty="easy"
+            echo -e "\033[0mDu hast die Schwierigkeitsstufe leicht gewählt."
+        elif [ $difficulty = "2" ]; then
+            difficulty="medium"
+            echo -e "\033[0mDu hast die Schwierigkeitsstufe mittel gewählt."
+        elif [ $difficulty = "3" ]; then
+            difficulty="hard"
+            echo -e "\033[0mDu hast die Schwierigkeitsstufe schwer gewählt."
+        else
+            echo -e "\033[31mBitte nur 1, 2 oder 3 eingeben"
+            askDifficultyMode
+        fi
     fi
 }
 
