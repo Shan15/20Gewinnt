@@ -22,7 +22,7 @@ currentValue=0
 # Default \033[0m
 
 askCompetitionMode(){
-    echo -e "\033[0mWillkommen zu 20 Gewinnt. Bitte wähle eines der folgenden Modi aus: "
+    echo -e "\033[0mWählen Sie den gewünschten Spielmodus aus: "
     echo -e "\033[0mpvp(1)"
     echo -e "\033[0mpve(2)"
     echo -e "\033[0meve(3)"
@@ -37,7 +37,7 @@ askCompetitionMode(){
         gameMode="eve"
         echo -e "\033[0mDu hast EVE gewählt."
     else
-        echo -e "\033[0mBitte nur 1, 2 oder 3 eingeben"
+        echo -e "\033[31mBitte nur 1, 2 oder 3 eingeben"
         askCompetitionMode
     fi
 }
@@ -48,18 +48,18 @@ askDifficultyMode(){
         echo -e "\033[0mleicht(1)"
         echo -e "\033[0mmittel(2)"
         echo -e "\033[0mschwer(3)"
-        read -p "" difficultyInput
-        if [ $difficultyInput = "1" ]; then
+        read -p "" difficulty
+        if [ $difficulty = "1" ]; then
             difficulty="easy"
             echo -e "\033[0mDu hast die Schwierigkeitsstufe leicht gewählt."
-        elif [ $difficultyInput = "2" ]; then
+        elif [ $difficulty = "2" ]; then
             difficulty="medium"
             echo -e "\033[0mDu hast die Schwierigkeitsstufe mittel gewählt."
-        elif [ $difficultyInput = "3" ]; then
+        elif [ $difficulty = "3" ]; then
             difficulty="hard"
             echo -e "\033[0mDu hast die Schwierigkeitsstufe schwer gewählt."
         else
-            echo -e "\033[0mBitte nur 1, 2 oder 3 eingeben"
+            echo -e "\033[31mBitte nur 1, 2 oder 3 eingeben"
             askDifficultyMode
         fi
     fi
@@ -79,9 +79,13 @@ printWinner(){
 }
 
 printLeaderboard(){
-    echo -e "\033[0mLeaderboard: "
-    echo -e "\033[0mName, Zeit"
-    cat winner.csv | cut -d "," -f 1,2 | sort -t "," -k 2 -n | head -n 10
+    echo -e "\033[0m--------------------------"
+    echo -e "\e[1;95mLeaderboard:"
+    echo ""
+    echo -e "\e[1;93mName | Zeit"
+    echo ""
+    cat winner.csv | cut -d "," -f 1,2 | sort -t "," -k 2 -n | head -n 10 | sed 's/,/ |/g'
+    echo -e "\033[0m--------------------------"
 }
 
 checkEnd(){
@@ -90,17 +94,16 @@ checkEnd(){
         exit 0
     fi
 }
-
 getUserInput(){
     currentPlayerType="player"
+
     echo -en "${userColor}"
-    read -p "Aktuller Stand is $currentValue - $currentPlayer, wie viel möchtest du hinzufügen (1 oder 2)? " playerInput
-    echo -en "\033[0m"
+    read -p "Aktuller Stand ist $currentValue - $currentPlayer, wie viel möchtest du hinzufügen (1 oder 2)? " playerInput
     # Validate playerinput
-    while [ $playerInput -ne 1 ] && [ $playerInput -ne 2 ]; do
+    while [ $playerInput != 1 ] && [ $playerInput != 2 ]; do
         echo -e "\033[31mBitte nur 1 oder 2 eingeben\033[0m"
         echo -en "${userColor}"
-        read -p "Aktuller Stand is $currentValue, $currentPlayer, wie viel möchtest du hinzufügen (1 oder 2)? " playerInput
+        read -p "Aktuller Stand ist $currentValue, $currentPlayer \xf0\x9f\xa7\x91, wie viel möchtest du hinzufügen (1 oder 2)? " playerInput
         echo -en "\033[0m"
     done
 
@@ -132,7 +135,7 @@ getBotInput(){
         botInput=$((RANDOM % 2 + 1))
     fi
 
-    echo -e "${userColor}Aktuller Stand is $currentValue - Der Bot wird $botInput hinzufügen\033[0m"
+    echo -e "${userColor}Aktuller Stand ist $currentValue - Der Bot \xf0\x9f\xa4\x96 wird $botInput hinzufügen\033[0m"
     currentValue=$((currentValue + botInput))
 }
 
@@ -153,6 +156,7 @@ getUserName(){
     fi
 }
 
+echo -e "\033[0mWillkommen zu 20 Gewinnt."
 askCompetitionMode
 askDifficultyMode
 getUserName
