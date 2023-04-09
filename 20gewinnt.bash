@@ -22,7 +22,7 @@ currentValue=0
 # Default \033[0m
 
 askCompetitionMode(){
-    echo -e "\033[0mWillkommen zu 20 Gewinnt. Bitte wähle eines der folgenden Modi aus: "
+    echo -e "\033[0mWählen Sie den gewünschten Spielmodus aus: "
     echo -e "\033[0mpvp(1)"
     echo -e "\033[0mpve(2)"
     echo -e "\033[0meve(3)"
@@ -37,7 +37,7 @@ askCompetitionMode(){
         gameMode="eve"
         echo -e "\033[0mDu hast EVE gewählt."
     else
-        echo -e "\033[0mBitte nur 1, 2 oder 3 eingeben"
+        echo -e "\033[31mBitte nur 1, 2 oder 3 eingeben"
         askCompetitionMode
     fi
 }
@@ -58,7 +58,7 @@ askDifficultyMode(){
         difficulty="hard"
         echo -e "\033[0mDu hast die Schwierigkeitsstufe schwer gewählt."
     else
-        echo -e "\033[0mBitte nur 1, 2 oder 3 eingeben"
+        echo -e "\033[31mBitte nur 1, 2 oder 3 eingeben"
         askDifficultyMode
     fi
 }
@@ -151,6 +151,7 @@ getUserName(){
     fi
 }
 
+echo -e "\033[0mWillkommen zu 20 Gewinnt."
 askCompetitionMode
 getUserName
 
