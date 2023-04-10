@@ -100,10 +100,10 @@ getUserInput(){
     echo -en "${userColor}"
     read -p "Aktuller Stand ist $currentValue - $currentPlayer, wie viel möchtest du hinzufügen (1 oder 2)? " playerInput
     # Validate playerinput
-    while [ $playerInput != 1 ] && [ $playerInput != 2 ]; do
+    while [ "$playerInput" != 1 ] && [ "$playerInput" != 2 ]; do
         echo -e "\033[31mBitte nur 1 oder 2 eingeben\033[0m"
         echo -en "${userColor}"
-        read -p "Aktuller Stand ist $currentValue, $currentPlayer \xf0\x9f\xa7\x91, wie viel möchtest du hinzufügen (1 oder 2)? " playerInput
+        read -p "Aktuller Stand ist $currentValue, $currentPlayer , wie viel möchtest du hinzufügen (1 oder 2)? " playerInput
         echo -en "\033[0m"
     done
 
@@ -158,50 +158,49 @@ getUserName(){
 
 
 game() {
-echo -e "\033[0mWillkommen zu 20 Gewinnt."
-askCompetitionMode
-askDifficultyMode
-getUserName
+    echo -e "\033[0mWillkommen zu 20 Gewinnt."
+    askCompetitionMode
+    askDifficultyMode
+    getUserName
 
+    while true; do
+        if [ $gameMode = "pvp" ]; then
+            userColor="\033[36m"
+            currentPlayer="$player1Name"
+            getUserInput
+            checkEnd
 
-while true; do
-    if [ $gameMode = "pvp" ]; then
-        userColor="\033[36m"
-        currentPlayer="$player1Name"
-        getUserInput
-        checkEnd
+            userColor="\033[35m"
+            currentPlayer="$player2Name"
+            getUserInput
+            checkEnd
+        fi
 
-        userColor="\033[35m"
-        currentPlayer="$player2Name"
-        getUserInput
-        checkEnd
-    fi
+        if [ $gameMode = "pve" ]; then
+            userColor="\033[36m"
+            currentPlayer="$player1Name"
+            getUserInput
+            checkEnd
 
-    if [ $gameMode = "pve" ]; then
-        userColor="\033[36m"
-        currentPlayer="$player1Name"
-        getUserInput
-        checkEnd
+            userColor="\033[33m"
+            currentPlayer="Bot"
+            getBotInput
+            checkEnd
+        fi
 
-        userColor="\033[33m"
-        currentPlayer="Bot"
-        getBotInput
-        checkEnd
-    fi
+        if [ $gameMode = "eve" ]; then
+            userColor="\033[36m"
+            currentPlayer="Bot 1"
+            getBotInput
+            checkEnd
 
-    if [ $gameMode = "eve" ]; then
-        userColor="\033[36m"
-        currentPlayer="Bot 1"
-        getBotInput
-        checkEnd
-
-        userColor="\033[35m"
-        currentPlayer="Bot 2"
-        getBotInput
-        checkEnd
-        sleep 1
-    fi
-done
+            userColor="\033[35m"
+            currentPlayer="Bot 2"
+            getBotInput
+            checkEnd
+            sleep 1
+        fi
+    done
 }
 
 game
