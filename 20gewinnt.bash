@@ -27,13 +27,13 @@ askCompetitionMode(){
     echo -e "\033[0mpve(2)"
     echo -e "\033[0meve(3)"
     read -p "" gameModeInput
-    if [ $gameModeInput = "1" ]; then
+    if [ "$gameModeInput" = "1" ]; then
         gameMode="pvp"
         echo -e "\033[0mDu hast PVP gewählt."
-    elif [ $gameModeInput = "2" ]; then
+    elif [ "$gameModeInput" = "2" ]; then
         gameMode="pve"
         echo -e "\033[0mDu hast PVE gewählt."
-    elif [ $gameModeInput = "3" ]; then
+    elif [ "$gameModeInput" = "3" ]; then
         gameMode="eve"
         echo -e "\033[0mDu hast EVE gewählt."
     else
@@ -49,13 +49,13 @@ askDifficultyMode(){
         echo -e "\033[0mmittel(2)"
         echo -e "\033[0mschwer(3)"
         read -p "" difficulty
-        if [ $difficulty = "1" ]; then
+        if [ "$difficulty" = "1" ]; then
             difficulty="easy"
             echo -e "\033[0mDu hast die Schwierigkeitsstufe leicht gewählt."
-        elif [ $difficulty = "2" ]; then
+        elif [ "$difficulty" = "2" ]; then
             difficulty="medium"
             echo -e "\033[0mDu hast die Schwierigkeitsstufe mittel gewählt."
-        elif [ $difficulty = "3" ]; then
+        elif [ "$difficulty" = "3" ]; then
             difficulty="hard"
             echo -e "\033[0mDu hast die Schwierigkeitsstufe schwer gewählt."
         else
