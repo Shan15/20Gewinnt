@@ -156,6 +156,8 @@ getUserName(){
     fi
 }
 
+
+game() {
 echo -e "\033[0mWillkommen zu 20 Gewinnt."
 askCompetitionMode
 askDifficultyMode
@@ -200,4 +202,6 @@ while true; do
         sleep 1
     fi
 done
+}
 
+game
