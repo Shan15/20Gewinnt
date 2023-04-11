@@ -124,9 +124,7 @@ getBotInput(){
     elif [ $difficulty = "hard" ]; then
         if [ $currentValue -eq 16 ] || [ $currentValue -eq 17 ]; then
             botInput=1
-        elif [ $currentValue -eq 18 ]; then
-            botInput=2
-        elif [ $currentValue -eq 15 ]; then
+        elif [ $currentValue -eq 18 ] || [ $currentValue -eq 15 ]; then
             botInput=2
         else
             botInput=$((RANDOM % 2 + 1))
@@ -135,7 +133,7 @@ getBotInput(){
         botInput=$((RANDOM % 2 + 1))
     fi
 
-    echo -e "${userColor}Aktuller Stand ist $currentValue - Der Bot \xf0\x9f\xa4\x96 wird $botInput hinzufügen\033[0m"
+    echo -e "${userColor}Aktuller Stand ist $currentValue - Der $currentPlayer \xf0\x9f\xa4\x96 wird $botInput hinzufügen\033[0m"
     currentValue=$((currentValue + botInput))
 }
 
@@ -193,12 +191,13 @@ game() {
             currentPlayer="Bot 1"
             getBotInput
             checkEnd
+            sleep 0.5
 
             userColor="\033[35m"
             currentPlayer="Bot 2"
             getBotInput
             checkEnd
-            sleep 1
+            sleep 0.5
         fi
     done
 }
