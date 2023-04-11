@@ -141,14 +141,27 @@ getUserName(){
     if [ $gameMode = "pve" ]; then
         echo -en "\033[36m"
         read -p "wie heisst du? " player1Name
+        while [ -z "$player1Name" ]; do
+            echo -en "\033[36m"
+            read -p "wie heisst du? " player1Name
+        done
         echo -en "\033[0m"
         startTime=$(date +%s)
     elif [ $gameMode = "pvp" ]; then
         echo -en "\033[36m"
         read -p "wie heisst der erste Spieler? " player1Name
         echo -en "\033[0m"
+        while [ -z "$player1Name" ]; do
+            echo -en "\033[36m"
+            read -p "wie heisst der erste Spieler? " player1Name
+        done
         echo -en "\033[35m"
+
         read -p "wie heisst der zweite Spieler? " player2Name
+        while [ -z "$player2Name" ]; do
+            echo -en "\033[36m"
+            read -p "wie heisst der zweite Spieler? " player2Name
+        done
         echo -en "\033[0m"
         startTime=$(date +%s)
     fi
