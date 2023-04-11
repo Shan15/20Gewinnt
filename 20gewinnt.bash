@@ -1,7 +1,9 @@
 #!/bin/bash
 
-# 20 Gewinnt
-
+# 20gewinnt.bash
+# -----------------------
+# 13.04.2023 Fabio Kälin, Shansai Muraleetharan, Taha Ali
+# -----------------------
 # 20 Gewinnt ist ein Spiel, bei dem zwei Spieler abwechselnd
 # entweder 1 oder 2 auswählen, um die aktuelle Zahl erhöhen.
 # Der Spieler, der als die Zahl 20 erreicht, hat gewonnen.
