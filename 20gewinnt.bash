@@ -102,7 +102,7 @@ getUserInput(){
     echo -en "${userColor}"
     read -p "Aktuller Stand ist $currentValue - $currentPlayer, wie viel möchtest du hinzufügen (1 oder 2)? " playerInput
     # Validate playerinput
-    while [ "$playerInput" != 1 ] && [ "$playerInput" != 2 ]; do
+    while [ "$playerInput" != "1" ] && [ "$playerInput" != "2" ]; do
         echo -e "\033[31mBitte nur 1 oder 2 eingeben\033[0m"
         echo -en "${userColor}"
         read -p "Aktuller Stand ist $currentValue, $currentPlayer , wie viel möchtest du hinzufügen (1 oder 2)? " playerInput
